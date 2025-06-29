@@ -34,11 +34,11 @@ function isUserOver14(birthDateString) {
         age--;
     }
 
-    return age > 14;
+    return age >= 14;
 };
 
 console.log(isUserOver14("2005-06-22")); // true (20 лет)
-console.log(isUserOver14("2010-07-23")); // false (14 лет, меньше 15)
+console.log(isUserOver14("2011-06-23")); // true (14 лет)
 console.log(isUserOver14("2009-06-21")); // true (16 лет)
 console.log(isUserOver14("2015-06-22")); // false (10 лет)
 console.log(isUserOver14("invalid")); // false (невалидный формат)
