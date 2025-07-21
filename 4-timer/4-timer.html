@@ -2,50 +2,14 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Таймер до Нового Года</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 50px;
-      }
-      #timer {
-        font-size: 24px;
-      }
-    </style>
+    <link rel="stylesheet" href="./4-timer.css" />
+    <title>Happy New Year - Timer</title>
+    <script src="./4-timer.js" defer></script>
   </head>
+
   <body>
-    <h1>До Нового Года осталось:</h1>
-    <div id="timer"></div>
-    <script>
-      const endDate = new Date(new Date().getFullYear() + 1, 0, 1, 0, 0, 0);
-
-      function padZero(num) {
-        return num < 10 ? `0${num}` : num;
-      }
-
-      function updateTimer() {
-        const now = new Date();
-        const diffMs = endDate - now;
-        const seconds = Math.floor((diffMs / 1000) % 60);
-        const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
-        const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
-        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        const months = Math.floor(days / 30.42);
-        const remainingDays = Math.floor(days % 30.42);
-
-        const formattedTime =
-          `${padZero(months)} месяцев, ${padZero(remainingDays)} дней, ` +
-          `${padZero(hours)} часов, ${padZero(minutes)} минут, ${padZero(
-            seconds
-          )} секунд`;
-
-        document.getElementById("timer").textContent = formattedTime;
-      }
-
-      setInterval(updateTimer, 1000);
-      updateTimer();
-    </script>
+    <div class="timer__wrapper"></div>
   </body>
 </html>
