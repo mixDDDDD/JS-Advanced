@@ -1,46 +1,40 @@
 'use strict';
 
 class Billing {
-  constructor(amount) {
-    this.amount = amount;
-  }
-
-  calculateTotal() {
-    return this.amount;
-  }
+    #amount = 100;
+    calculateTotal() {
+        return this.#amount;
+    }
 }
 
-class FixedBilling extends Billing {
-  
+class FixBilling extends Billing {
+    calculateTotal() {
+        return super.calculateTotal();
+    }
 }
-
 class HourBilling extends Billing {
-  constructor(amount, hours) {
-    super(amount);
-    this.hours = hours;
-  }
-
-  calculateTotal() {
-    return this.amount * this.hours;
-  }
+    constructor(hour) {
+        super();
+        this.hour = hour;
+    }
+    calculateTotal() {
+        return super.calculateTotal() * this.hour;
+    }
 }
-
 class ItemBilling extends Billing {
-  constructor(amount, itemCount) {
-    super(amount);
-    this.itemCount = itemCount;
-  }
-
-  calculateTotal() {
-    return this.amount * this.itemCount;
-  }
+    constructor(items) {
+        super();
+        this.items = items;
+    }
+    calculateTotal() {
+        return super.calculateTotal() * this.items.length;
+    }
 }
 
-const fixed = new FixedBilling(1000);
-console.log(fixed.calculateTotal());
+const elems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const hour = 24;
+const billingArray = [new FixBilling(), new HourBilling(hour), new ItemBilling(elems)];
 
-const hourly = new HourBilling(50, 20);
-console.log(hourly.calculateTotal());
-
-const item = new ItemBilling(30, 10);
-console.log(item.calculateTotal());
+for (const billing of billingArray) {
+    console.log(billing.calculateTotal());
+}
