@@ -1,0 +1,14 @@
+{
+  "name": "user-task-project",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "live-server"
+  },
+
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "rollup": "^4.46.2"
+  }
+}
